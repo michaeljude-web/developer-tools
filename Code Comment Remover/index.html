@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Comment Remover</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div class="hero__eyebrow">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Developer Tool
+        </div>
+        <h1 class="hero__title">Code <span>Comment</span> Remover </h1>
+      </header>
+      <div class="lang-bar" id="lang-bar"></div>
+      <div class="controls">
+        <div class="controls__left">
+          <div class="detected-badge" id="detected-badge">
+            <i class="fa-solid fa-circle-question"></i>
+            <span id="detected-label">No language detected</span>
+          </div>
+          <span class="stat-chip" id="removed-chip">0 comments removed</span>
+        </div>
+        <div class="controls__right">
+          <button class="btn btn--primary" onclick="removeComments()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Remove Comments </button>
+          <button class="btn btn--green" onclick="copyOutput()">
+            <i class="fa-regular fa-copy"></i>
+            <span id="copy-lbl">Copy</span>
+          </button>
+          <button class="btn btn--amber" onclick="downloadOutput()">
+            <i class="fa-solid fa-download"></i> Download </button>
+          <button class="btn btn--red" onclick="clearAll()">
+            <i class="fa-solid fa-rotate-left"></i> Clear </button>
+        </div>
+      </div>
+      <div class="editor-grid">
+        <div class="editor-panel">
+          <div class="editor-panel__header">
+            <div class="editor-panel__title">
+              <i class="fa-solid fa-code"></i> Input
+            </div>
+            <span class="editor-panel__meta" id="input-lines">0 lines</span>
+          </div>
+          <div class="editor-panel__body" id="input-body">
+            <textarea id="input-code" spellcheck="false" placeholder="// Paste your code here...&#10;// Supports: JS, TS, PHP, Python, Java, C/C++,&#10;// C#, CSS, HTML, Ruby, Go, Rust, Swift, Kotlin,&#10;// SQL, Bash, Lua, Perl, and more..." oninput="onInputChange()"></textarea>
+            <div class="drop-hint" id="drop-hint">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <p>Drop your file here</p>
+            </div>
+          </div>
+        </div>
+        <div class="editor-panel">
+          <div class="editor-panel__header">
+            <div class="editor-panel__title">
+              <i class="fa-solid fa-sparkles"></i> Output
+            </div>
+            <span class="editor-panel__meta" id="output-lines">—</span>
+          </div>
+          <div class="editor-panel__body">
+            <div class="output-display empty" id="output-display">
+              <span>Output will appear here after removing comments.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-check-circle"></i>
+      <span id="toast-msg">Done!</span>
+    </div>
+  </body>
+  <script src="js/script.js"></script>
+</html>
